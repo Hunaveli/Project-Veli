@@ -1,10 +1,10 @@
 # Project-Veli
 
-This is the official depository of Project Veli! 
+This is the official repository of Project Veli! 
 
 All changes made to Project Veli are uploaded here for open-source!
 
-For official project builds, go to here: https://www.veli.dev/ProjectVeli
+For official project builds, go to here: https://github.com/Hunaveli/Project-Veli/releases
 
 This project is specifically designed for an, 
  - *RGH (Reset Glitch Hack)* or *JTAG (Joint Test Action Group) Xbox*

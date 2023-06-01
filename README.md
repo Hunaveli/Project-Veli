@@ -2,8 +2,8 @@
 
 This is the official repository of Project Veli! 
 
-Project Veli is a RTE (Real Time Editor) Tool that mods Call of Duty Black Ops 1 Zombies currently, in future
-releases it will be Multi-COD supported. 
+Project Veli is a RTE (Real Time Editor) Tool that mods Call of Duty Black Ops 1 Zombies. In future
+releases the tool is planned to be Multi-COD supported. 
 
 All changes made to Project Veli are uploaded here for open-source!
 

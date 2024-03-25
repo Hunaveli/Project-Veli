@@ -33,7 +33,6 @@ namespace Project_Veli
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.connect = new System.Windows.Forms.Button();
-            this.zombModGroup = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -81,7 +80,14 @@ namespace Project_Veli
             this.ipLabel = new System.Windows.Forms.Label();
             this.cpuBox = new System.Windows.Forms.TextBox();
             this.cpuLabel = new System.Windows.Forms.Label();
-            this.zombModGroup.SuspendLayout();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.bo1zombMods = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.prestigeButton = new System.Windows.Forms.Button();
+            this.prestigeSelection = new System.Windows.Forms.NumericUpDown();
+            this.statBox = new System.Windows.Forms.GroupBox();
+            this.killsButton = new System.Windows.Forms.Button();
+            this.killsSelection = new System.Windows.Forms.NumericUpDown();
             this.groupBox3.SuspendLayout();
             this.playerGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.povScaleValue)).BeginInit();
@@ -90,6 +96,12 @@ namespace Project_Veli
             ((System.ComponentModel.ISupportInitialize)(this.playerSpeed)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.infoBox.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.bo1zombMods.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.prestigeSelection)).BeginInit();
+            this.statBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.killsSelection)).BeginInit();
             this.SuspendLayout();
             // 
             // connect
@@ -106,19 +118,6 @@ namespace Project_Veli
             this.connect.UseVisualStyleBackColor = false;
             this.connect.Click += new System.EventHandler(this.connect_Click);
             // 
-            // zombModGroup
-            // 
-            this.zombModGroup.Controls.Add(this.groupBox3);
-            this.zombModGroup.Controls.Add(this.playerGroup);
-            this.zombModGroup.Controls.Add(this.groupBox2);
-            this.zombModGroup.Controls.Add(this.groupBox1);
-            this.zombModGroup.Location = new System.Drawing.Point(12, 124);
-            this.zombModGroup.Name = "zombModGroup";
-            this.zombModGroup.Size = new System.Drawing.Size(560, 309);
-            this.zombModGroup.TabIndex = 3;
-            this.zombModGroup.TabStop = false;
-            this.zombModGroup.Text = "Zombie Mods";
-            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.button3);
@@ -126,7 +125,7 @@ namespace Project_Veli
             this.groupBox3.Controls.Add(this.button1);
             this.groupBox3.Controls.Add(this.paintballMode);
             this.groupBox3.Controls.Add(this.cartoonMode);
-            this.groupBox3.Location = new System.Drawing.Point(6, 159);
+            this.groupBox3.Location = new System.Drawing.Point(6, 146);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(240, 144);
             this.groupBox3.TabIndex = 7;
@@ -198,7 +197,7 @@ namespace Project_Veli
             this.playerGroup.Controls.Add(this.zmWeapons);
             this.playerGroup.Controls.Add(this.zmWeapon);
             this.playerGroup.Controls.Add(this.povScaleValue);
-            this.playerGroup.Location = new System.Drawing.Point(252, 176);
+            this.playerGroup.Location = new System.Drawing.Point(252, 163);
             this.playerGroup.Name = "playerGroup";
             this.playerGroup.Size = new System.Drawing.Size(302, 127);
             this.playerGroup.TabIndex = 6;
@@ -326,7 +325,7 @@ namespace Project_Veli
             this.groupBox2.Controls.Add(this.playerSpeedButton);
             this.groupBox2.Controls.Add(this.restartMap);
             this.groupBox2.Controls.Add(this.slowMotion);
-            this.groupBox2.Location = new System.Drawing.Point(252, 19);
+            this.groupBox2.Location = new System.Drawing.Point(252, 6);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(302, 151);
             this.groupBox2.TabIndex = 6;
@@ -352,7 +351,7 @@ namespace Project_Veli
             this.playerSpeedLabel.Name = "playerSpeedLabel";
             this.playerSpeedLabel.Size = new System.Drawing.Size(52, 13);
             this.playerSpeedLabel.TabIndex = 17;
-            this.playerSpeedLabel.Text = "175 (175)";
+            this.playerSpeedLabel.Text = "499 (175)";
             // 
             // timescaleLabel
             // 
@@ -362,7 +361,7 @@ namespace Project_Veli
             this.timescaleLabel.Name = "timescaleLabel";
             this.timescaleLabel.Size = new System.Drawing.Size(34, 13);
             this.timescaleLabel.TabIndex = 16;
-            this.timescaleLabel.Text = "1 (10)";
+            this.timescaleLabel.Text = "5 (10)";
             // 
             // jumpHeight
             // 
@@ -476,7 +475,7 @@ namespace Project_Veli
             this.groupBox1.Controls.Add(this.noClip);
             this.groupBox1.Controls.Add(this.thirdPerson);
             this.groupBox1.Controls.Add(this.ammoButton);
-            this.groupBox1.Location = new System.Drawing.Point(6, 19);
+            this.groupBox1.Location = new System.Drawing.Point(6, 6);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(240, 134);
             this.groupBox1.TabIndex = 5;
@@ -629,7 +628,7 @@ namespace Project_Veli
             this.versionLabel.Name = "versionLabel";
             this.versionLabel.Size = new System.Drawing.Size(121, 13);
             this.versionLabel.TabIndex = 6;
-            this.versionLabel.Text = "Project Veli v0.6 [BETA]";
+            this.versionLabel.Text = "Project Veli v0.8 [BETA]";
             // 
             // copyrightLabel
             // 
@@ -683,16 +682,116 @@ namespace Project_Veli
             this.cpuLabel.TabIndex = 0;
             this.cpuLabel.Text = "CPU Key:";
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.bo1zombMods);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.tabControl1.Location = new System.Drawing.Point(5, 124);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(567, 322);
+            this.tabControl1.TabIndex = 5;
+            // 
+            // bo1zombMods
+            // 
+            this.bo1zombMods.BackColor = System.Drawing.Color.Silver;
+            this.bo1zombMods.Controls.Add(this.groupBox3);
+            this.bo1zombMods.Controls.Add(this.playerGroup);
+            this.bo1zombMods.Controls.Add(this.groupBox1);
+            this.bo1zombMods.Controls.Add(this.groupBox2);
+            this.bo1zombMods.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.bo1zombMods.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.bo1zombMods.Location = new System.Drawing.Point(4, 22);
+            this.bo1zombMods.Name = "bo1zombMods";
+            this.bo1zombMods.Padding = new System.Windows.Forms.Padding(3);
+            this.bo1zombMods.Size = new System.Drawing.Size(559, 296);
+            this.bo1zombMods.TabIndex = 0;
+            this.bo1zombMods.Text = "BO1 [TU11] Zombies";
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.tabPage2.Controls.Add(this.statBox);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(559, 296);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "BO1 [TU11] Multiplayer";
+            // 
+            // prestigeButton
+            // 
+            this.prestigeButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.prestigeButton.Location = new System.Drawing.Point(9, 19);
+            this.prestigeButton.Name = "prestigeButton";
+            this.prestigeButton.Size = new System.Drawing.Size(75, 20);
+            this.prestigeButton.TabIndex = 0;
+            this.prestigeButton.Text = "Prestige";
+            this.prestigeButton.UseVisualStyleBackColor = true;
+            this.prestigeButton.Click += new System.EventHandler(this.prestigeButton_Click);
+            // 
+            // prestigeSelection
+            // 
+            this.prestigeSelection.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.prestigeSelection.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.prestigeSelection.Location = new System.Drawing.Point(88, 19);
+            this.prestigeSelection.Maximum = new decimal(new int[] {
+            16,
+            0,
+            0,
+            0});
+            this.prestigeSelection.Name = "prestigeSelection";
+            this.prestigeSelection.Size = new System.Drawing.Size(105, 20);
+            this.prestigeSelection.TabIndex = 1;
+            // 
+            // statBox
+            // 
+            this.statBox.Controls.Add(this.killsSelection);
+            this.statBox.Controls.Add(this.killsButton);
+            this.statBox.Controls.Add(this.prestigeButton);
+            this.statBox.Controls.Add(this.prestigeSelection);
+            this.statBox.Location = new System.Drawing.Point(6, 3);
+            this.statBox.Name = "statBox";
+            this.statBox.Size = new System.Drawing.Size(199, 77);
+            this.statBox.TabIndex = 2;
+            this.statBox.TabStop = false;
+            this.statBox.Text = "Stats";
+            // 
+            // killsButton
+            // 
+            this.killsButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.killsButton.Location = new System.Drawing.Point(9, 43);
+            this.killsButton.Name = "killsButton";
+            this.killsButton.Size = new System.Drawing.Size(75, 20);
+            this.killsButton.TabIndex = 2;
+            this.killsButton.Text = "Kills";
+            this.killsButton.UseVisualStyleBackColor = true;
+            // 
+            // killsSelection
+            // 
+            this.killsSelection.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.killsSelection.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.killsSelection.Location = new System.Drawing.Point(88, 43);
+            this.killsSelection.Maximum = new decimal(new int[] {
+            16,
+            0,
+            0,
+            0});
+            this.killsSelection.Name = "killsSelection";
+            this.killsSelection.Size = new System.Drawing.Size(105, 20);
+            this.killsSelection.TabIndex = 3;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(584, 445);
+            this.ClientSize = new System.Drawing.Size(577, 450);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.infoBox);
             this.Controls.Add(this.connect);
-            this.Controls.Add(this.zombModGroup);
             this.ForeColor = System.Drawing.SystemColors.Control;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -700,8 +799,6 @@ namespace Project_Veli
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Project Veli";
-            this.TransparencyKey = System.Drawing.Color.Transparent;
-            this.zombModGroup.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.playerGroup.ResumeLayout(false);
             this.playerGroup.PerformLayout();
@@ -714,6 +811,12 @@ namespace Project_Veli
             this.groupBox1.PerformLayout();
             this.infoBox.ResumeLayout(false);
             this.infoBox.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.bo1zombMods.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.prestigeSelection)).EndInit();
+            this.statBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.killsSelection)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -721,7 +824,6 @@ namespace Project_Veli
         #endregion
 
         private System.Windows.Forms.Button connect;
-        private GroupBox zombModGroup;
         private Button godMode;
         private Button noClip;
         private Button ammoButton;
@@ -769,6 +871,14 @@ namespace Project_Veli
         private Label timescaleLabel;
         private Button button3;
         private Button lowGravity;
+        private TabControl tabControl1;
+        private TabPage bo1zombMods;
+        private TabPage tabPage2;
+        private Button prestigeButton;
+        private NumericUpDown prestigeSelection;
+        private GroupBox statBox;
+        private NumericUpDown killsSelection;
+        private Button killsButton;
     }
 }
 

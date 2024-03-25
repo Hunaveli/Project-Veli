@@ -63,3 +63,11 @@ v0.7 -- May 6 2023
 		- Default
 	- Added Notification Text to appear on most commands.
 	- Cleaned up UI 
+
+v0.8 -- March 23 2024
+	
+	- Fixed Weird UI Transparency Bug.
+	- Added Tabs, implementing a new "BO1 [TU11] Multiplayer" section.
+		- Includes Prestige Stat Option
+		- Kill Stat Option (Not Fully Functional)
+	- Heavily updated stability to the tool to prevent crashes.

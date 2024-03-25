@@ -13,6 +13,7 @@ using XRPCLib;
 using XRPCPlusPlus;
 using System.Diagnostics.Eventing.Reader;
 using System.Threading;
+using System.Diagnostics;
 
 namespace Project_Veli
 {
@@ -34,7 +35,7 @@ namespace Project_Veli
                 {
                     MessageBox.Show("The Tool has succesfully connected, happy modding!", 
                         "Connected to Console!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    console.XNotify("Connected to Project Veli v0.5\nDeveloped by @Hunaveli", 14);
+                    console.XNotify("Connected to Project Veli v0.7\nDeveloped by @Hunaveli", 14);
                     connect.Text = "Connected!";
                     cpuBox.Text = console.GetCPUKey(); ipBox.Text = console.XboxIP();
                     
@@ -148,12 +149,19 @@ namespace Project_Veli
 
         private void moneyButton_Click(object sender, EventArgs e)
         {
-            byte[] Values = { 0x00, 0x06, 0x68, 0xA0 };
-            xbox.SetMemory(0x82DC33B4, Values);
-            xbox.SetMemory(0x82DC50DC, Values);
-            xbox.SetMemory(0x82DC6E04, Values);
-            xbox.SetMemory(0x82DC8B2C, Values);
-            xbox.Call(0x82329850, new object[] { -1, 0, "c \"^2$420k ^6has been granted to ^1ALL ^6players.\"" });
+            try
+            {
+                byte[] Values = { 0x00, 0x06, 0x68, 0xA0 };
+                xbox.SetMemory(0x82DC33B4, Values);
+                xbox.SetMemory(0x82DC50DC, Values);
+                xbox.SetMemory(0x82DC6E04, Values);
+                xbox.SetMemory(0x82DC8B2C, Values);
+                xbox.Call(0x82329850, new object[] { -1, 0, "c \"^2$420k ^6has been granted to ^1ALL ^6players.\"" });
+            }
+            catch
+            {
+                errorMessage();
+            }
         }
 
         private void zmWeapon_Click(object sender, EventArgs e)
@@ -196,51 +204,86 @@ namespace Project_Veli
 
         private void unAmmo_Click(object sender, EventArgs e)
         {
-            byte[] Values = { 0xFF, 0xFF, 0xFF, 0xFF };
-            xbox.Call(0x82329850, new object[] { -1, 0, "c \"Infinite Ammo: ^2Enabled!\"" });
-            xbox.SetMemory(0x82143E8C, Values);
+            try
+            {
+                byte[] Values = { 0xFF, 0xFF, 0xFF, 0xFF };
+                xbox.Call(0x82329850, new object[] { -1, 0, "c \"Infinite Ammo: ^2Enabled!\"" });
+                xbox.SetMemory(0x82143E8C, Values);
+            }
+            catch
+            {
+                errorMessage();
+            }
         }
 
         private void fallDamage_Click(object sender, EventArgs e)
         {
-            byte[] Values = { 0x64, 0x00, 0x00, 0x00 };
-            xbox.SetMemory(0x820054E0, Values);
-            xbox.Call(0x82329850, new object[] { -1, 0, "c \"No Fall Damage: ^2Enabled!\"" });
+            try
+            {
+                byte[] Values = { 0x64, 0x00, 0x00, 0x00 };
+                xbox.SetMemory(0x820054E0, Values);
+                xbox.Call(0x82329850, new object[] { -1, 0, "c \"No Fall Damage: ^2Enabled!\"" });
+            }
+            catch
+            {
+                errorMessage();
+            }
         }
 
         private void jumpHeight_Click(object sender, EventArgs e)
         {
-            if (jumpHeight.Text == "Jump High")
+            try
             {
-                byte[] Values = { 0x48, 0x00, 0x00, 0x00 };
-                xbox.SetMemory(0x82002B60, Values);
-                jumpHeight.Text = "Normal Jump";
-                xbox.Call(0x82329850, new object[] { -1, 0, "c \"Jump High: ^2Enabled!\"" });
-                MessageBox.Show("MAKE SURE TO DISABLE FALL DAMAGE!\n\nYou will die from jump height if you do not do so.",
-                        "Jump High Is Enabled!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if (jumpHeight.Text == "Jump High")
+                {
+                    byte[] Values = { 0x48, 0x00, 0x00, 0x00 };
+                    xbox.SetMemory(0x82002B60, Values);
+                    jumpHeight.Text = "Normal Jump";
+                    xbox.Call(0x82329850, new object[] { -1, 0, "c \"Jump High: ^2Enabled!\"" });
+                    MessageBox.Show("MAKE SURE TO DISABLE FALL DAMAGE!\n\nYou will die from jump height if you do not do so.",
+                            "Jump High Is Enabled!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    byte[] ogValues = { 0x42, 0x1C, 0x00, 0x00 };
+                    xbox.Call(0x82329850, new object[] { -1, 0, "c \"Jump High: ^1Disabled!\"" });
+                    xbox.SetMemory(0x82002B60, ogValues);
+                    jumpHeight.Text = "Jump High";
+                }
             }
-            else
+            catch
             {
-                byte[] ogValues = { 0x42, 0x1C, 0x00, 0x00 };
-                xbox.Call(0x82329850, new object[] { -1, 0, "c \"Jump High: ^1Disabled!\"" });
-                xbox.SetMemory(0x82002B60, ogValues);
-                jumpHeight.Text = "Jump High";
+                errorMessage();
             }
         }
 
         private void customNoti_Click(object sender, EventArgs e)
         {
-            uint notiType = 0;
-            /*if (smileNotiCheck.GetItemChecked(0) == true)
+            try
             {
-                notiType = 14;
-            }*/
-            console.XNotify(customNotiBox.Text, notiType);
+                uint notiType = 0;
+                /*if (smileNotiCheck.GetItemChecked(0) == true)
+                {
+                    notiType = 14;
+                }*/
+                console.XNotify(customNotiBox.Text, notiType);
+            }
+            catch
+            {
+                errorMessage();
+            }
         }
 
         private void screenshotButton_Click(object sender, EventArgs e)
         {
-            console.ShutDownConsole();
+            try
+            {
+                console.ShutDownConsole();
+            }
+            catch
+            {
+                errorMessage();
+            }
         }
 
         private void bindNoClip_Click(object sender, EventArgs e)
@@ -249,7 +292,7 @@ namespace Project_Veli
             {
                 sendCmd("bind DPAD_DOWN noclip");
                 MessageBox.Show("No-Clip has successfully been binded\nto the 'DOWN D-PAD' button.",
-                        "Nso-Clip Binded!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 xbox.Call(0x82329850, new object[] { -1, 0, "c \"No-Clip has been binded to the ^2'DOWN D-PAD'\"" });
             }
             catch
@@ -272,9 +315,16 @@ namespace Project_Veli
 
         private void selfMoney_Click(object sender, EventArgs e)
         {
-            byte[] Values = { 0x00, 0x06, 0x68, 0xA0 };
-            xbox.SetMemory(0x82DC33B4, Values);
-            xbox.Call(0x82329850, new object[] { -1, 0, "c \"^2$420k ^6has been given.\"" });
+            try
+            {
+                byte[] Values = { 0x00, 0x06, 0x68, 0xA0 };
+                xbox.SetMemory(0x82DC33B4, Values);
+                xbox.Call(0x82329850, new object[] { -1, 0, "c \"^2$420k ^6has been given.\"" });
+            }
+            catch
+            {
+                errorMessage();
+            }
         }
 
         private void cartoonMode_Click(object sender, EventArgs e)
@@ -413,9 +463,16 @@ namespace Project_Veli
             }
             else
             {
-                sendCmd("G_Ai 1");
-                xbox.Call(0x82329850, new object[] { -1, 0, "c \"Zombies: ^2Re-Enabled!\"" });
-                zombSpawn.Text = "Disable Zombs";
+                try
+                {
+                    sendCmd("G_Ai 1");
+                    xbox.Call(0x82329850, new object[] { -1, 0, "c \"Zombies: ^2Re-Enabled!\"" });
+                    zombSpawn.Text = "Disable Zombs";
+                } 
+                catch
+                {
+                    errorMessage();
+                }
             }
         }
 
@@ -478,57 +535,86 @@ namespace Project_Veli
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (button3.Text == "Sun [Red]")
+            try
             {
-                xbox.Call(0x82329850, new object[] { -1, 0, "v r_lightTweakSunColor \"1 0 0 0\"" });
-                xbox.Call(0x82329850, new object[] { -1, 0, "c \"Sun Set To: ^1Red\"" });
-                button3.Text = "Sun [Purple]";
+                if (button3.Text == "Sun [Red]")
+                {
+                    xbox.Call(0x82329850, new object[] { -1, 0, "v r_lightTweakSunColor \"1 0 0 0\"" });
+                    xbox.Call(0x82329850, new object[] { -1, 0, "c \"Sun Set To: ^1Red\"" });
+                    button3.Text = "Sun [Purple]";
+                }
+                else if (button3.Text == "Sun [Purple]")
+                {
+                    xbox.Call(0x82329850, new object[] { -1, 0, "v r_lightTweakSunColor \"1 0 1 0\"" });
+                    xbox.Call(0x82329850, new object[] { -1, 0, "c \"Sun Set To: ^6Purple\"" });
+                    button3.Text = "Sun [White]";
+                }
+                else if (button3.Text == "Sun [White]")
+                {
+                    xbox.Call(0x82329850, new object[] { -1, 0, "v r_lightTweakSunColor \"1 1 1 0\"" });
+                    xbox.Call(0x82329850, new object[] { -1, 0, "c \"Sun Set To: White\"" });
+                    button3.Text = "Sun [Blue]";
+                }
+                else if (button3.Text == "Sun [Blue]")
+                {
+                    xbox.Call(0x82329850, new object[] { -1, 0, "v r_lightTweakSunColor \"0 0 1 0\"" });
+                    xbox.Call(0x82329850, new object[] { -1, 0, "c \"Sun Set To: ^4Blue\"" });
+                    button3.Text = "Sun [Off]";
+                }
+                else if (button3.Text == "Sun [Off]")
+                {
+                    xbox.Call(0x82329850, new object[] { -1, 0, "v r_lightTweakSunColor \"0 0 0 0\"" });
+                    xbox.Call(0x82329850, new object[] { -1, 0, "c \"Sun Set To: ^0Dark\"" });
+                    button3.Text = "Sun [Default]";
+                }
+                else if (button3.Text == "Sun [Default]")
+                {
+                    xbox.Call(0x82329850, new object[] { -1, 0, "v r_lightTweakSunColor \"1 1 1 1\"" });
+                    xbox.Call(0x82329850, new object[] { -1, 0, "c \"Sun Set To: ^8Default\"" });
+                    button3.Text = "Sun [Red]";
+                }
             }
-            else if (button3.Text == "Sun [Purple]")
+            catch
             {
-                xbox.Call(0x82329850, new object[] { -1, 0, "v r_lightTweakSunColor \"1 0 1 0\"" });
-                xbox.Call(0x82329850, new object[] { -1, 0, "c \"Sun Set To: ^6Purple\"" });
-                button3.Text = "Sun [White]";
-            }
-            else if (button3.Text == "Sun [White]")
-            {
-                xbox.Call(0x82329850, new object[] { -1, 0, "v r_lightTweakSunColor \"1 1 1 0\"" });
-                xbox.Call(0x82329850, new object[] { -1, 0, "c \"Sun Set To: White\"" });
-                button3.Text = "Sun [Blue]";
-            }
-            else if (button3.Text == "Sun [Blue]")
-            {
-                xbox.Call(0x82329850, new object[] { -1, 0, "v r_lightTweakSunColor \"0 0 1 0\"" });
-                xbox.Call(0x82329850, new object[] { -1, 0, "c \"Sun Set To: ^4Blue\"" });
-                button3.Text = "Sun [Off]";
-            }
-            else if (button3.Text == "Sun [Off]")
-            {
-                xbox.Call(0x82329850, new object[] { -1, 0, "v r_lightTweakSunColor \"0 0 0 0\"" });
-                xbox.Call(0x82329850, new object[] { -1, 0, "c \"Sun Set To: ^0Dark\"" });
-                button3.Text = "Sun [Default]";
-            }
-            else if (button3.Text == "Sun [Default]")
-            {
-                xbox.Call(0x82329850, new object[] { -1, 0, "v r_lightTweakSunColor \"1 1 1 1\"" });
-                xbox.Call(0x82329850, new object[] { -1, 0, "c \"Sun Set To: ^8Default\"" });
-                button3.Text = "Sun [Red]";
+                errorMessage();
             }
         }
 
         private void lowGravity_Click(object sender, EventArgs e)
         {
-            if (lowGravity.Text == "Low Gravity")
+            try
             {
-                xbox.Call(0x82329850, new object[] { -1, 0, "v bg_gravity \"100\"" });
-                xbox.Call(0x82329850, new object[] { -1, 0, "c \"Low Gravity: ^2Enabled\"" });
-                lowGravity.Text = "Disable Gravity";
+                if (lowGravity.Text == "Low Gravity")
+                {
+                    xbox.Call(0x82329850, new object[] { -1, 0, "v bg_gravity \"100\"" });
+                    xbox.Call(0x82329850, new object[] { -1, 0, "c \"Low Gravity: ^2Enabled\"" });
+                    lowGravity.Text = "Disable Gravity";
+                }
+                else
+                {
+                    xbox.Call(0x82329850, new object[] { -1, 0, "v bg_gravity \"800\"" });
+                    xbox.Call(0x82329850, new object[] { -1, 0, "c \"Low Gravity: ^1Disabled\"" });
+                    lowGravity.Text = "Low Gravity";
+                }
             }
-            else
+            catch
             {
-                xbox.Call(0x82329850, new object[] { -1, 0, "v bg_gravity \"800\"" });
-                xbox.Call(0x82329850, new object[] { -1, 0, "c \"Low Gravity: ^1Disabled\"" });
-                lowGravity.Text = "Low Gravity";
+                errorMessage();
+            }
+        }
+
+        private void prestigeButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string prestige = prestigeSelection.Value.ToString();
+                int prestigeInt = int.Parse(prestige);
+                byte[] Values = { ((byte)prestigeInt) };
+                xbox.SetMemory(0x84085720 + 0x90DD, Values);
+            }
+            catch
+            {
+                errorMessage();
             }
         }
     }

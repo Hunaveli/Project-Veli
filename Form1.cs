@@ -38,7 +38,6 @@ namespace Project_Veli
                     console.XNotify("Connected to Project Veli v0.7\nDeveloped by @Hunaveli", 14);
                     connect.Text = "Connected!";
                     cpuBox.Text = console.GetCPUKey(); ipBox.Text = console.XboxIP();
-                    
                 }
                 else
                 {
@@ -82,7 +81,7 @@ namespace Project_Veli
             {
                 sendCmd("noclip");
             }
-            catch
+            catch (Exception)
             {
                 errorMessage();
             }
@@ -95,7 +94,7 @@ namespace Project_Veli
                 sendCmd("give ammo");
                 xbox.Call(0x82329850, new object[] { -1, 0, "c \"Ammo Has Been ^1Given!\"" });
             }
-            catch
+            catch (Exception)
             {
                 errorMessage();
             }
@@ -107,7 +106,7 @@ namespace Project_Veli
             {
                 sendCmd("toggle cg_thirdperson");
             }
-            catch
+            catch (Exception)
             {
                 errorMessage();
             }
@@ -129,7 +128,7 @@ namespace Project_Veli
                     xbox.Call(0x82329850, new object[] { -1, 0, "c \"Slow-Motion: ^1Disabled!\"" });
                 }
             }
-            catch
+            catch (Exception)
             {
                 errorMessage();
             }
@@ -141,7 +140,7 @@ namespace Project_Veli
             {
                 sendCmd("map_restart");
             }
-            catch
+            catch (Exception)
             {
                 errorMessage();
             }
@@ -158,7 +157,7 @@ namespace Project_Veli
                 xbox.SetMemory(0x82DC8B2C, Values);
                 xbox.Call(0x82329850, new object[] { -1, 0, "c \"^2$420k ^6has been granted to ^1ALL ^6players.\"" });
             }
-            catch
+            catch (Exception)
             {
                 errorMessage();
             }
@@ -170,7 +169,7 @@ namespace Project_Veli
             {
                 sendCmd("give " + zmWeapons.SelectedItem);
             }
-            catch
+            catch (Exception)
             {
                 errorMessage();
             }
@@ -183,7 +182,7 @@ namespace Project_Veli
                 sendCmd("g_speed " + playerSpeed.Value);
                 xbox.Call(0x82329850, new object[] { -1, 0, "c \"Player Speed Set To: ^6" + playerSpeed.Value.ToString() + "\"" });
             }
-            catch
+            catch (Exception)
             {
                 errorMessage();
             }
@@ -196,7 +195,7 @@ namespace Project_Veli
                 sendCmd("toggle timescale " + timescaleBar.Value);
                 xbox.Call(0x82329850, new object[] { -1, 0, "c \"Timescale Set To: ^6" + timescaleBar.Value.ToString() + "\"" });
             }
-            catch
+            catch (Exception)
             {
                 errorMessage();
             }
@@ -210,7 +209,7 @@ namespace Project_Veli
                 xbox.Call(0x82329850, new object[] { -1, 0, "c \"Infinite Ammo: ^2Enabled!\"" });
                 xbox.SetMemory(0x82143E8C, Values);
             }
-            catch
+            catch (Exception)
             {
                 errorMessage();
             }
@@ -224,7 +223,7 @@ namespace Project_Veli
                 xbox.SetMemory(0x820054E0, Values);
                 xbox.Call(0x82329850, new object[] { -1, 0, "c \"No Fall Damage: ^2Enabled!\"" });
             }
-            catch
+            catch (Exception)
             {
                 errorMessage();
             }
@@ -251,7 +250,7 @@ namespace Project_Veli
                     jumpHeight.Text = "Jump High";
                 }
             }
-            catch
+            catch (Exception)
             {
                 errorMessage();
             }
@@ -268,7 +267,7 @@ namespace Project_Veli
                 }*/
                 console.XNotify(customNotiBox.Text, notiType);
             }
-            catch
+            catch (Exception)
             {
                 errorMessage();
             }
@@ -280,7 +279,7 @@ namespace Project_Veli
             {
                 console.ShutDownConsole();
             }
-            catch
+            catch (Exception)
             {
                 errorMessage();
             }
@@ -295,7 +294,7 @@ namespace Project_Veli
                         "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 xbox.Call(0x82329850, new object[] { -1, 0, "c \"No-Clip has been binded to the ^2'DOWN D-PAD'\"" });
             }
-            catch
+            catch (Exception)
             {
                 errorMessage();
             }
@@ -307,7 +306,7 @@ namespace Project_Veli
             {
                 sendCmd("dropweapon");
             }
-            catch
+            catch (Exception)
             {
                 errorMessage();
             }
@@ -321,7 +320,7 @@ namespace Project_Veli
                 xbox.SetMemory(0x82DC33B4, Values);
                 xbox.Call(0x82329850, new object[] { -1, 0, "c \"^2$420k ^6has been given.\"" });
             }
-            catch
+            catch (Exception)
             {
                 errorMessage();
             }
@@ -333,7 +332,7 @@ namespace Project_Veli
             {
                 sendCmd("toggle r_fullbright 1 0");
             }
-            catch
+            catch (Exception)
             {
                 errorMessage();
             }
@@ -345,7 +344,7 @@ namespace Project_Veli
             {
                 sendCmd("toggle r_debuglayers");
             }
-            catch
+            catch (Exception)
             {
                 errorMessage();
             }
@@ -361,7 +360,7 @@ namespace Project_Veli
                     button1.Text = "Score Color [Yellow]";
                     xbox.Call(0x82329850, new object[] { -1, 0, "c \"Score Color Set To: ^1Red\"" });
                 }
-                catch
+                catch (Exception)
                 {
                     errorMessage();
                 }
@@ -374,7 +373,7 @@ namespace Project_Veli
                     button1.Text = "Score Color [Pink]";
                     xbox.Call(0x82329850, new object[] { -1, 0, "c \"Score Color Set To: ^3Yellow\"" });
                 }
-                catch
+                catch (Exception)
                 {
                     errorMessage();
                 }
@@ -387,7 +386,7 @@ namespace Project_Veli
                     button1.Text = "Score Color [Cyan]";
                     xbox.Call(0x82329850, new object[] { -1, 0, "c \"Score Color Set To: ^6Pink\"" });
                 }
-                catch
+                catch (Exception)
                 {
                     errorMessage();
                 }
@@ -400,7 +399,7 @@ namespace Project_Veli
                     button1.Text = "Score Color [Blue]";
                     xbox.Call(0x82329850, new object[] { -1, 0, "c \"Score Color Set To: ^5Cyan\"" });
                 }
-                catch
+                catch (Exception)
                 {
                     errorMessage();
                 }
@@ -413,7 +412,7 @@ namespace Project_Veli
                     button1.Text = "Score Color [Revert]";
                     xbox.Call(0x82329850, new object[] { -1, 0, "c \"Score Color Set To: ^4Blue\"" });
                 }
-                catch
+                catch (Exception)
                 {
                     errorMessage();
                 }
@@ -426,7 +425,7 @@ namespace Project_Veli
                     button1.Text = "Score Color [Revert]";
                     xbox.Call(0x82329850, new object[] { -1, 0, "c \"Score Color Set To: ^0Black\"" });
                 }
-                catch
+                catch (Exception)
                 {
                     errorMessage();
                 }
@@ -439,7 +438,7 @@ namespace Project_Veli
                     button1.Text = "Score Color [Red]";
                     xbox.Call(0x82329850, new object[] { -1, 0, "c \"Score Color Set To: ^8Default\"" });
                 }
-                catch
+                catch (Exception)
                 {
                     errorMessage();
                 }
@@ -456,7 +455,7 @@ namespace Project_Veli
                     xbox.Call(0x82329850, new object[] { -1, 0, "c \"Zombies: ^1Disabled!\"" });
                     zombSpawn.Text = "Enable Zombs";
                 }
-                catch
+                catch (Exception)
                 {
                     errorMessage();
                 }
@@ -469,27 +468,10 @@ namespace Project_Veli
                     xbox.Call(0x82329850, new object[] { -1, 0, "c \"Zombies: ^2Re-Enabled!\"" });
                     zombSpawn.Text = "Disable Zombs";
                 } 
-                catch
+                catch (Exception)
                 {
                     errorMessage();
                 }
-            }
-        }
-
-        private void setGamertag_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                byte[] Values = { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, };
-                xbox.SetMemory(0x841987D4, Values);
-
-                Values = Encoding.ASCII.GetBytes("h" + gamertagBox.Text);
-                xbox.SetMemory(0x841987D4, Values);
-            }
-            catch
-            {
-                errorMessage();
             }
         }
 
@@ -500,7 +482,7 @@ namespace Project_Veli
                 sendCmd("cg_fov " + povScaleValue.Value);
                 xbox.Call(0x82329850, new object[] { -1, 0, "c \"FOV: ^6" + povScaleValue.Value.ToString() + "\"" });
             }
-            catch
+            catch (Exception)
             {
                 errorMessage();
             }
@@ -527,7 +509,7 @@ namespace Project_Veli
             {
                 sendCmd("toggle r_colormap 1 2 3 0");
             }
-            catch
+            catch (Exception)
             {
                 errorMessage();
             }
@@ -574,7 +556,7 @@ namespace Project_Veli
                     button3.Text = "Sun [Red]";
                 }
             }
-            catch
+            catch (Exception)
             {
                 errorMessage();
             }
@@ -597,7 +579,35 @@ namespace Project_Veli
                     lowGravity.Text = "Low Gravity";
                 }
             }
-            catch
+            catch (Exception)
+            {
+                errorMessage();
+            }
+        }
+
+        private void setGamertag_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Patch, shoutout Heaventh and Gamer7112
+                xbox.SetMemory(0x824FA18C, new byte[] { 0x60, 0x00, 0x00, 0x00 });
+                xbox.SetMemory(0x83D077F0, new byte[] { 0x7C, 0x83, 0x23, 0x78, 0x3D, 0x60, 0x83, 0xD0, 0x38, 0x8B, 0x78, 0x68, 0x38, 0x00, 0x00, 0x20, 0x3D, 0x60, 0x82, 0x3F, 0x39, 0x6B, 0xE5, 0x18, 0x7D, 0x69, 0x03, 0xA6, 0x4E, 0x80, 0x04, 0x20 });
+                xbox.SetMemory(0x826CF418, new byte[] { 0x3D, 0x60, 0x83, 0xD0, 0x39, 0x6B, 0x77, 0xF0, 0x7D, 0x69, 0x03, 0xA6, 0x4E, 0x80, 0x04, 0x20 });
+
+                // I did this part, @Hunaveli
+                byte[] gamertag = { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+                char[] gamertagText = gamertagBox.Text.ToCharArray();
+
+                for (int b = 0; b < gamertagText.Length; b++)
+                {
+                    char temp = gamertagText[b];
+                    byte textByte = (byte)temp;
+                    gamertag[b] = textByte;
+                }
+
+                xbox.SetMemory(0x83D07868, gamertag);
+            }
+            catch (Exception)
             {
                 errorMessage();
             }
@@ -612,7 +622,52 @@ namespace Project_Veli
                 byte[] Values = { ((byte)prestigeInt) };
                 xbox.SetMemory(0x84085720 + 0x90DD, Values);
             }
-            catch
+            catch (Exception)
+            {
+                errorMessage();
+            }
+        }
+
+        private void killsButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string kills = killsSelection.Value.ToString();
+                int killsInt = int.Parse(kills);
+                byte[] Values = { ((byte)killsInt) };
+                xbox.SetMemory(0x84085720 + 0x8E29, Values);
+            }
+            catch (Exception)
+            {
+                errorMessage();
+            }
+        }
+
+        private void deathsButtonBO_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string deaths = deathSelectionBO.Value.ToString();
+                int deathsInt = int.Parse(deaths);
+                byte[] Values = { ((byte)deathsInt) };
+                xbox.SetMemory(0x84085720 + 0x8CF5, Values);
+            }
+            catch (Exception)
+            {
+                errorMessage();
+            }
+        }
+
+        private void maxRankBO_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                byte[] rankLevel = { 0x31 };
+                xbox.SetMemory(0x84085720 + 0x90E1, rankLevel);
+                byte[] rankXP = { 0xA4, 0x43, 0x13, 0x00, 0x02, 0x00, 0x00, 0x00, 0x2B };
+                xbox.SetMemory(0x84085720 + 0x90E5, rankXP);
+            }
+            catch (Exception)
             {
                 errorMessage();
             }

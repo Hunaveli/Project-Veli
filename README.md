@@ -2,24 +2,25 @@
 
 This is the official repository of Project Veli! 
 
-Project Veli is a RTE (Real Time Editor) Tool that mods Call of Duty Black Ops 1 Zombies. In future
-releases the tool is planned to be Multi-COD supported. 
+Project Veli is a RTE (Real Time Editor) Tool that mods Call of Duty Black Ops 1, Zombies and Multiplayer. In future releases, the tool is planned to be Multi-COD supported.  
 
 All changes made to Project Veli are uploaded here for open-source!
 
 For official project builds and how to install, go to here: https://github.com/Hunaveli/Project-Veli/releases
 
 This project is specifically designed for an, 
- - **RGH** *(Reset Glitch Hack)* or **JTAG** *(Joint Test Action Group) Xbox*
- - **NOT** *For* **PC** *or any kind of* **Playstation**
- - *The application can only be ran on a* **Windows** *device, not MacOS.*
+ - **RGH** (Reset Glitch Hack) or **JTAG** (Joint Test Action Group) **Xbox**
+ - **NOT** For **PC** or any kind of **Playstation**
+ - The application can only be ran on a **Windows Environment**, *not MacOS.*
 
-The project is made completely in C# using Visual Studio Community 2022 and inheriting functions from 
+This project is made completely in C# using Visual Studio Community 2022 by myself and inheriting functions from 
 the JRPC.cs and xDevKit.cs classes. 
 
-If you would like to contribute, please feel free to contact me at **Contact@Veli.dev**
+If you would like to contribute or let me know your opinion of the tool, please feel free to contact me at **Contact@Veli.dev**
 
 ![Tool Display](https://github.com/Hunaveli/Project-Veli/assets/95416737/695e5547-8ce6-4c44-adfb-b2110a3e26d5)
+
+![projectVeliMPShowCaseBO](https://github.com/Hunaveli/Project-Veli/assets/95416737/7f8790d2-6d90-43c9-8c40-3716fdd564da)
 
 ![Screenshot 2023-05-05 17-41-26](https://github.com/Hunaveli/Project-Veli/assets/95416737/d62498f1-c62c-4e33-8a46-1066fac31b43)
 

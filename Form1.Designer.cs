@@ -83,11 +83,15 @@ namespace Project_Veli
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.bo1zombMods = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.statBox = new System.Windows.Forms.GroupBox();
+            this.killsSelection = new System.Windows.Forms.NumericUpDown();
+            this.killsButton = new System.Windows.Forms.Button();
             this.prestigeButton = new System.Windows.Forms.Button();
             this.prestigeSelection = new System.Windows.Forms.NumericUpDown();
-            this.statBox = new System.Windows.Forms.GroupBox();
-            this.killsButton = new System.Windows.Forms.Button();
-            this.killsSelection = new System.Windows.Forms.NumericUpDown();
+            this.gamertagMPbox = new System.Windows.Forms.GroupBox();
+            this.deathSelectionBO = new System.Windows.Forms.NumericUpDown();
+            this.deathsButtonBO = new System.Windows.Forms.Button();
+            this.maxRankBO = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
             this.playerGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.povScaleValue)).BeginInit();
@@ -99,9 +103,11 @@ namespace Project_Veli
             this.tabControl1.SuspendLayout();
             this.bo1zombMods.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.prestigeSelection)).BeginInit();
             this.statBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.killsSelection)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.prestigeSelection)).BeginInit();
+            this.gamertagMPbox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.deathSelectionBO)).BeginInit();
             this.SuspendLayout();
             // 
             // connect
@@ -300,7 +306,7 @@ namespace Project_Veli
             // 
             // povScaleValue
             // 
-            this.povScaleValue.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.povScaleValue.BackColor = System.Drawing.Color.Silver;
             this.povScaleValue.Cursor = System.Windows.Forms.Cursors.Hand;
             this.povScaleValue.Location = new System.Drawing.Point(103, 17);
             this.povScaleValue.Maximum = 160;
@@ -398,7 +404,7 @@ namespace Project_Veli
             // 
             // timescaleBar
             // 
-            this.timescaleBar.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.timescaleBar.BackColor = System.Drawing.Color.Silver;
             this.timescaleBar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.timescaleBar.Location = new System.Drawing.Point(103, 47);
             this.timescaleBar.Minimum = 1;
@@ -421,7 +427,7 @@ namespace Project_Veli
             // 
             // playerSpeed
             // 
-            this.playerSpeed.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.playerSpeed.BackColor = System.Drawing.Color.Silver;
             this.playerSpeed.Cursor = System.Windows.Forms.Cursors.Hand;
             this.playerSpeed.Location = new System.Drawing.Point(103, 19);
             this.playerSpeed.Maximum = 999;
@@ -467,8 +473,6 @@ namespace Project_Veli
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.gamertagBox);
-            this.groupBox1.Controls.Add(this.setGamertag);
             this.groupBox1.Controls.Add(this.bindNoClip);
             this.groupBox1.Controls.Add(this.unAmmo);
             this.groupBox1.Controls.Add(this.godMode);
@@ -486,8 +490,8 @@ namespace Project_Veli
             // 
             this.gamertagBox.BackColor = System.Drawing.SystemColors.Control;
             this.gamertagBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.gamertagBox.Location = new System.Drawing.Point(80, 19);
-            this.gamertagBox.MaxLength = 31;
+            this.gamertagBox.Location = new System.Drawing.Point(81, 18);
+            this.gamertagBox.MaxLength = 32;
             this.gamertagBox.Name = "gamertagBox";
             this.gamertagBox.Size = new System.Drawing.Size(154, 20);
             this.gamertagBox.TabIndex = 9;
@@ -496,9 +500,9 @@ namespace Project_Veli
             // setGamertag
             // 
             this.setGamertag.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.setGamertag.Location = new System.Drawing.Point(6, 19);
+            this.setGamertag.Location = new System.Drawing.Point(8, 18);
             this.setGamertag.Name = "setGamertag";
-            this.setGamertag.Size = new System.Drawing.Size(68, 22);
+            this.setGamertag.Size = new System.Drawing.Size(68, 21);
             this.setGamertag.TabIndex = 6;
             this.setGamertag.Text = "Gamertag:";
             this.setGamertag.UseVisualStyleBackColor = true;
@@ -507,7 +511,7 @@ namespace Project_Veli
             // bindNoClip
             // 
             this.bindNoClip.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.bindNoClip.Location = new System.Drawing.Point(122, 75);
+            this.bindNoClip.Location = new System.Drawing.Point(122, 47);
             this.bindNoClip.Name = "bindNoClip";
             this.bindNoClip.Size = new System.Drawing.Size(112, 22);
             this.bindNoClip.TabIndex = 5;
@@ -518,7 +522,7 @@ namespace Project_Veli
             // unAmmo
             // 
             this.unAmmo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.unAmmo.Location = new System.Drawing.Point(122, 103);
+            this.unAmmo.Location = new System.Drawing.Point(122, 75);
             this.unAmmo.Name = "unAmmo";
             this.unAmmo.Size = new System.Drawing.Size(112, 22);
             this.unAmmo.TabIndex = 4;
@@ -529,7 +533,7 @@ namespace Project_Veli
             // godMode
             // 
             this.godMode.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.godMode.Location = new System.Drawing.Point(6, 47);
+            this.godMode.Location = new System.Drawing.Point(6, 19);
             this.godMode.Name = "godMode";
             this.godMode.Size = new System.Drawing.Size(112, 22);
             this.godMode.TabIndex = 0;
@@ -540,7 +544,7 @@ namespace Project_Veli
             // noClip
             // 
             this.noClip.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.noClip.Location = new System.Drawing.Point(6, 75);
+            this.noClip.Location = new System.Drawing.Point(6, 47);
             this.noClip.Name = "noClip";
             this.noClip.Size = new System.Drawing.Size(112, 22);
             this.noClip.TabIndex = 1;
@@ -551,7 +555,7 @@ namespace Project_Veli
             // thirdPerson
             // 
             this.thirdPerson.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.thirdPerson.Location = new System.Drawing.Point(122, 47);
+            this.thirdPerson.Location = new System.Drawing.Point(122, 19);
             this.thirdPerson.Name = "thirdPerson";
             this.thirdPerson.Size = new System.Drawing.Size(112, 22);
             this.thirdPerson.TabIndex = 3;
@@ -562,7 +566,7 @@ namespace Project_Veli
             // ammoButton
             // 
             this.ammoButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ammoButton.Location = new System.Drawing.Point(6, 103);
+            this.ammoButton.Location = new System.Drawing.Point(6, 75);
             this.ammoButton.Name = "ammoButton";
             this.ammoButton.Size = new System.Drawing.Size(112, 22);
             this.ammoButton.TabIndex = 2;
@@ -626,15 +630,15 @@ namespace Project_Veli
             this.versionLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.versionLabel.Location = new System.Drawing.Point(298, 42);
             this.versionLabel.Name = "versionLabel";
-            this.versionLabel.Size = new System.Drawing.Size(121, 13);
+            this.versionLabel.Size = new System.Drawing.Size(130, 13);
             this.versionLabel.TabIndex = 6;
-            this.versionLabel.Text = "Project Veli v0.8 [BETA]";
+            this.versionLabel.Text = "Project Veli v0.8.1 [BETA]";
             // 
             // copyrightLabel
             // 
             this.copyrightLabel.AutoSize = true;
             this.copyrightLabel.ForeColor = System.Drawing.Color.DarkOrchid;
-            this.copyrightLabel.Location = new System.Drawing.Point(419, 42);
+            this.copyrightLabel.Location = new System.Drawing.Point(427, 42);
             this.copyrightLabel.Name = "copyrightLabel";
             this.copyrightLabel.Size = new System.Drawing.Size(129, 13);
             this.copyrightLabel.TabIndex = 5;
@@ -712,6 +716,7 @@ namespace Project_Veli
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.tabPage2.Controls.Add(this.gamertagMPbox);
             this.tabPage2.Controls.Add(this.statBox);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
@@ -720,10 +725,51 @@ namespace Project_Veli
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "BO1 [TU11] Multiplayer";
             // 
+            // statBox
+            // 
+            this.statBox.Controls.Add(this.maxRankBO);
+            this.statBox.Controls.Add(this.deathSelectionBO);
+            this.statBox.Controls.Add(this.deathsButtonBO);
+            this.statBox.Controls.Add(this.killsSelection);
+            this.statBox.Controls.Add(this.killsButton);
+            this.statBox.Controls.Add(this.prestigeButton);
+            this.statBox.Controls.Add(this.prestigeSelection);
+            this.statBox.Location = new System.Drawing.Point(7, 58);
+            this.statBox.Name = "statBox";
+            this.statBox.Size = new System.Drawing.Size(199, 123);
+            this.statBox.TabIndex = 2;
+            this.statBox.TabStop = false;
+            this.statBox.Text = "Stats";
+            // 
+            // killsSelection
+            // 
+            this.killsSelection.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.killsSelection.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.killsSelection.Location = new System.Drawing.Point(85, 66);
+            this.killsSelection.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
+            this.killsSelection.Name = "killsSelection";
+            this.killsSelection.Size = new System.Drawing.Size(105, 20);
+            this.killsSelection.TabIndex = 3;
+            // 
+            // killsButton
+            // 
+            this.killsButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.killsButton.Location = new System.Drawing.Point(6, 66);
+            this.killsButton.Name = "killsButton";
+            this.killsButton.Size = new System.Drawing.Size(75, 20);
+            this.killsButton.TabIndex = 2;
+            this.killsButton.Text = "Kills";
+            this.killsButton.UseVisualStyleBackColor = true;
+            this.killsButton.Click += new System.EventHandler(this.killsButton_Click);
+            // 
             // prestigeButton
             // 
             this.prestigeButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.prestigeButton.Location = new System.Drawing.Point(9, 19);
+            this.prestigeButton.Location = new System.Drawing.Point(6, 42);
             this.prestigeButton.Name = "prestigeButton";
             this.prestigeButton.Size = new System.Drawing.Size(75, 20);
             this.prestigeButton.TabIndex = 0;
@@ -735,7 +781,7 @@ namespace Project_Veli
             // 
             this.prestigeSelection.Cursor = System.Windows.Forms.Cursors.Hand;
             this.prestigeSelection.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.prestigeSelection.Location = new System.Drawing.Point(88, 19);
+            this.prestigeSelection.Location = new System.Drawing.Point(85, 42);
             this.prestigeSelection.Maximum = new decimal(new int[] {
             16,
             0,
@@ -745,42 +791,52 @@ namespace Project_Veli
             this.prestigeSelection.Size = new System.Drawing.Size(105, 20);
             this.prestigeSelection.TabIndex = 1;
             // 
-            // statBox
+            // gamertagMPbox
             // 
-            this.statBox.Controls.Add(this.killsSelection);
-            this.statBox.Controls.Add(this.killsButton);
-            this.statBox.Controls.Add(this.prestigeButton);
-            this.statBox.Controls.Add(this.prestigeSelection);
-            this.statBox.Location = new System.Drawing.Point(6, 3);
-            this.statBox.Name = "statBox";
-            this.statBox.Size = new System.Drawing.Size(199, 77);
-            this.statBox.TabIndex = 2;
-            this.statBox.TabStop = false;
-            this.statBox.Text = "Stats";
+            this.gamertagMPbox.Controls.Add(this.setGamertag);
+            this.gamertagMPbox.Controls.Add(this.gamertagBox);
+            this.gamertagMPbox.Location = new System.Drawing.Point(7, 6);
+            this.gamertagMPbox.Name = "gamertagMPbox";
+            this.gamertagMPbox.Size = new System.Drawing.Size(243, 46);
+            this.gamertagMPbox.TabIndex = 10;
+            this.gamertagMPbox.TabStop = false;
+            this.gamertagMPbox.Text = "Pre-Game Gamertag Poker";
             // 
-            // killsButton
+            // deathSelectionBO
             // 
-            this.killsButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.killsButton.Location = new System.Drawing.Point(9, 43);
-            this.killsButton.Name = "killsButton";
-            this.killsButton.Size = new System.Drawing.Size(75, 20);
-            this.killsButton.TabIndex = 2;
-            this.killsButton.Text = "Kills";
-            this.killsButton.UseVisualStyleBackColor = true;
-            // 
-            // killsSelection
-            // 
-            this.killsSelection.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.killsSelection.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.killsSelection.Location = new System.Drawing.Point(88, 43);
-            this.killsSelection.Maximum = new decimal(new int[] {
-            16,
+            this.deathSelectionBO.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.deathSelectionBO.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deathSelectionBO.Location = new System.Drawing.Point(85, 90);
+            this.deathSelectionBO.Maximum = new decimal(new int[] {
+            999999,
             0,
             0,
             0});
-            this.killsSelection.Name = "killsSelection";
-            this.killsSelection.Size = new System.Drawing.Size(105, 20);
-            this.killsSelection.TabIndex = 3;
+            this.deathSelectionBO.Name = "deathSelectionBO";
+            this.deathSelectionBO.Size = new System.Drawing.Size(105, 20);
+            this.deathSelectionBO.TabIndex = 5;
+            // 
+            // deathsButtonBO
+            // 
+            this.deathsButtonBO.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.deathsButtonBO.Location = new System.Drawing.Point(6, 90);
+            this.deathsButtonBO.Name = "deathsButtonBO";
+            this.deathsButtonBO.Size = new System.Drawing.Size(75, 20);
+            this.deathsButtonBO.TabIndex = 4;
+            this.deathsButtonBO.Text = "Deaths";
+            this.deathsButtonBO.UseVisualStyleBackColor = true;
+            this.deathsButtonBO.Click += new System.EventHandler(this.deathsButtonBO_Click);
+            // 
+            // maxRankBO
+            // 
+            this.maxRankBO.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.maxRankBO.Location = new System.Drawing.Point(6, 18);
+            this.maxRankBO.Name = "maxRankBO";
+            this.maxRankBO.Size = new System.Drawing.Size(75, 20);
+            this.maxRankBO.TabIndex = 6;
+            this.maxRankBO.Text = "Max Rank";
+            this.maxRankBO.UseVisualStyleBackColor = true;
+            this.maxRankBO.Click += new System.EventHandler(this.maxRankBO_Click);
             // 
             // Form1
             // 
@@ -808,15 +864,17 @@ namespace Project_Veli
             ((System.ComponentModel.ISupportInitialize)(this.timescaleBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.playerSpeed)).EndInit();
             this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.infoBox.ResumeLayout(false);
             this.infoBox.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.bo1zombMods.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.prestigeSelection)).EndInit();
             this.statBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.killsSelection)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.prestigeSelection)).EndInit();
+            this.gamertagMPbox.ResumeLayout(false);
+            this.gamertagMPbox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.deathSelectionBO)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -879,6 +937,10 @@ namespace Project_Veli
         private GroupBox statBox;
         private NumericUpDown killsSelection;
         private Button killsButton;
+        private GroupBox gamertagMPbox;
+        private NumericUpDown deathSelectionBO;
+        private Button deathsButtonBO;
+        private Button maxRankBO;
     }
 }
 
